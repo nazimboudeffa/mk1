@@ -5,7 +5,7 @@ StateMachineExample.DemoState = function () {
     Phaser.State.call(this);
 
     this.prefab_classes = {
-        "hero": StateMachineExample.Hero.prototype.constructor
+        'player': StateMachineExample.Hero.prototype.constructor
     };
 };
 
@@ -25,8 +25,14 @@ StateMachineExample.DemoState.prototype.create = function () {
     "use strict";
 
     this.background = game.add.image(0, 0, 'arena');
-    var position = {"x":50,"y":100};
-    var properties = {"texture":"idle-01.gif"}
-    var prefab = new this.prefab_classes["hero"](this, "raiden", position, properties);
+    //var position = {"x":50,"y":100};
+    var properties = {
+            'key' : 'raiden',
+            'texture' : 'idle-01.gif'
+        };
+    //this.add.sprite(50, 100, 'raiden', 'idle-01.gif');
+    this.prefabs = {};
+    var prefab = new this.prefab_classes['player'](this, 'raiden', 50, 100, properties);
+    //this.prefabs['raiden'] = prefab;
 
 };

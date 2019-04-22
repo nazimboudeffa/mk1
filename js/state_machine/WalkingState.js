@@ -17,6 +17,7 @@ StateMachineExample.WalkingState.prototype.constructor = StateMachineExample.Wal
 StateMachineExample.WalkingState.prototype.enter = function () {
     "use strict";
     // start animation and set velocity
+    console.log("Entered Walking State");
 
     this.prefab.body.velocity.x = this.direction * this.walking_speed;
 
@@ -32,7 +33,8 @@ StateMachineExample.WalkingState.prototype.enter = function () {
 StateMachineExample.WalkingState.prototype.exit = function () {
     "use strict";
     // stop animation and set velocity to zero
-    this.walking_animation.stop();
+    this.walking_animation_right.stop();
+    this.walking_animation_left.stop();
 };
 
 StateMachineExample.WalkingState.prototype.handle_input = function (command) {
@@ -40,8 +42,8 @@ StateMachineExample.WalkingState.prototype.handle_input = function (command) {
     switch (command.name) {
     case "stop":
         return "standing";
-    case "jump":
-        return "jumping";
+    //case "jump":
+    //    return "jumping";
     }
     StateMachineExample.State.prototype.handle_input.call(this, command);
 };

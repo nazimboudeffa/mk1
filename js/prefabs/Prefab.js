@@ -1,12 +1,13 @@
 var StateMachineExample = StateMachineExample || {};
 
-StateMachineExample.Prefab = function (game_state, name, position, properties) {
+StateMachineExample.Prefab = function (game_state, name, x, y, properties) {
     "use strict";
-    Phaser.Sprite.call(this, game_state.game, position.x, position.y, "raiden", 'idle-01.gif');
 
+    Phaser.Sprite.call(this, game_state.game, x, y, 'raiden', 'idle-01.gif');
     this.game_state = game_state;
-
     this.name = name;
+    game.add.existing(this);
+
 /*
     this.game_state.groups[properties.group].add(this);
     this.frame = +properties.frame;
@@ -17,6 +18,7 @@ StateMachineExample.Prefab = function (game_state, name, position, properties) {
 
     this.game_state.prefabs[name] = this;
 */
+
 };
 
 StateMachineExample.Prefab.prototype = Object.create(Phaser.Sprite.prototype);
