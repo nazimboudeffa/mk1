@@ -4,8 +4,8 @@ StateMachineExample.WalkingState = function (name, prefab, direction, walking_sp
     "use strict";
     StateMachineExample.State.call(this, name, prefab);
 
-    this.walking_animation_right = this.prefab.animations.add('walking-right', [16,17,18,19,20,21,22,23,24],10,true);
-    this.walking_animation_left = this.prefab.animations.add('walking-left', [24,23,22,21,20,19,18,17,16],10,true);
+    this.walking_animation_right = this.prefab.animations.add('walking-right', ["walking-01.gif","walking-02.gif","walking-03.gif","walking-04.gif","walking-05.gif","walking-06.gif","walking-07.gif","walking-08.gif","walking-09.gif"],10,true);
+    this.walking_animation_left = this.prefab.animations.add('walking-left', ["walking-09.gif","walking-08.gif","walking-07.gif","walking-06.gif","walking-05.gif","walking-04.gif","walking-03.gif","walking-02.gif","walking-01.gif"],10,true);
 
     this.direction = direction;
     this.walking_speed = walking_speed;
@@ -42,8 +42,10 @@ StateMachineExample.WalkingState.prototype.handle_input = function (command) {
     switch (command.name) {
     case "stop":
         return "standing";
-    //case "jump":
-    //    return "jumping";
-    }
+    case "jump":
+        return "jumping";
+    case "duck":
+        return "ducking"
+    };
     StateMachineExample.State.prototype.handle_input.call(this, command);
 };

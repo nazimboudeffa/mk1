@@ -4,7 +4,8 @@ StateMachineExample.StandingState = function (name, prefab, frame) {
     "use strict";
     StateMachineExample.State.call(this, name, prefab);
 
-    this.standing_animation = this.prefab.animations.add('idle', [0,1,2,3,4,5,6,7,8,9],10,true);
+    //this.standing_animation = this.prefab.animations.add('idle', [0,1,2,3,4,5,6,7,8,9],10,true);
+    this.standing_animation = this.prefab.animations.add('idle', ["idle-01.gif","idle-02.gif","idle-03.gif","idle-04.gif","idle-05.gif","idle-06.gif","idle-07.gif","idle-08.gif","idle-09.gif","idle-10.gif"],10,true);
 
     this.frame = frame;
 };
@@ -32,8 +33,10 @@ StateMachineExample.StandingState.prototype.handle_input = function (command) {
         } else {
             return "walking_right";
         }
-    //case "jump":
-    //    return "jumping";
+    case "jump":
+        return "jumping";
+    case "duck":
+        return "ducking";
     case "attack":
         return "attacking";
     }
